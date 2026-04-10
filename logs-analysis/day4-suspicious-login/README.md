@@ -1,4 +1,4 @@
-# Day 4 - part 1 – Suspicious Login Detection
+# Day 4 - Suspicious Login Detection
 
 ## Log Example
 Accepted password for user ahmed from 45.77.12.90 port 22 ssh2
