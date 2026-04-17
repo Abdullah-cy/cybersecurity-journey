@@ -31,3 +31,7 @@ Medium to High (depending on context)
 - Enable MFA if not enabled
 - Alert the user
 - Monitor for further suspicious actions
+
+## MITRE ATT&CK Mapping
+
+- Initial Access (T1078 - Valid Accounts)
