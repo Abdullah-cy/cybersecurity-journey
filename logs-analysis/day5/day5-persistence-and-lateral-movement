@@ -1,1 +1,94 @@
+# Day 5 – Persistence & Lateral Movement
 
+## Log Example
+
+```
+Accepted password for user ahmed from 192.168.1.10 port 22 ssh2
+user executed command: sudo su
+user is now root
+user created new account: backup_admin
+cron job added: /tmp/.hidden.sh every 5 minutes
+connection from 192.168.1.10 to 192.168.1.20 via SSH
+```
+
+---
+
+## Log Explain
+
+* Successful SSH login from internal IP (192.168.1.10)
+* User executed "sudo su" to elevate privileges
+* User gained root access
+* A new account (backup_admin) was created
+* A cron job was added to execute a hidden script every 5 minutes
+* SSH connection initiated to another internal host (192.168.1.20)
+
+---
+
+## Analysis
+
+The login originates from an internal IP address, which may indicate either a legitimate user or a compromised internal machine. However, the sequence of events is highly suspicious.
+
+The user escalated privileges to root, created a new account, and added a cron job that executes every 5 minutes. These actions strongly indicate persistence mechanisms.
+
+Additionally, the connection to another internal system suggests lateral movement within the network.
+
+---
+
+## Key Indicators
+
+* Privilege escalation to root
+* Creation of unauthorized account (backup_admin)
+* Persistence via cron job (/tmp/.hidden.sh)
+* Lateral movement within internal network
+* Internal IP usage
+
+---
+
+## Possible Threat
+
+* Privilege Escalation Attack
+* Persistence Mechanism (Backdoor via cron job)
+* Lateral Movement Attack
+* Full system compromise
+
+---
+
+## MITRE ATT&CK Mapping
+
+* T1078 – Valid Accounts
+* T1059 – Command Execution
+* T1136 – Create Account
+* T1053 – Scheduled Task / Cron Job
+* T1021 – Remote Services
+
+---
+
+## Conclusion
+
+This is a confirmed active attack involving privilege escalation, persistence, and lateral movement. The attacker has likely achieved full system compromise.
+
+---
+
+## Severity
+
+Critical
+(Internal access + root privileges + lateral movement)
+
+---
+
+## Recommended Action
+
+* Isolate the affected host from the network
+* Revoke root access and terminate active sessions
+* Remove unauthorized accounts (backup_admin)
+* Delete malicious cron jobs and scripts
+* Investigate lateral movement to other systems
+* Reset credentials for compromised accounts
+* Enable MFA
+
+---
+
+## Notes
+
+* Likely compromised internal machine
+* High risk of spread across network
